@@ -9,7 +9,7 @@ namespace BookShop.Services.Interfaces
     {
         Task<AuthorDetailsServiceModel> DetailsAsync(int authorId);
         Task<int> CreateAsync(string firstName, string lastName);
-        Task<bool> Exists(int authorId);
-        Task<IEnumerable<BooksByAuthorServiceModel>> GetBooks(int authorId);
+        Task<bool> ExistsAsync(int authorId);
+        Task<IEnumerable<BooksByAuthorServiceModel>> GetBooksAsync(int authorId);
     }
 }

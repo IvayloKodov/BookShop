@@ -29,11 +29,6 @@ namespace BookShop.Data
                 .HasMany(b => b.Categories)
                 .WithOne(bc => bc.Book)
                 .HasForeignKey(b => b.BookId);
-             
-            builder.Entity<Book>()
-                .HasMany(b => b.Categories)
-                .WithOne(bc => bc.Book)
-                .HasForeignKey(b => b.BookId);
 
             builder.Entity<Category>()
                 .HasMany(b => b.Books)

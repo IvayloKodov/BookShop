@@ -26,7 +26,7 @@ namespace BookShop.Api.Controllers
 
         [HttpGet(WithId + "/books")]
         public async Task<IActionResult> GetBooks(int id)
-            => this.OkOrNotFound(await _authorsService.GetBooks(id));
+            => this.OkOrNotFound(await _authorsService.GetBooksAsync(id));
          
         [HttpPost]
         [ValidateModelState]

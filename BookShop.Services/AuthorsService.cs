@@ -29,7 +29,7 @@ namespace BookShop.Services
                                    .FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<BooksByAuthorServiceModel>> GetBooks(int authorId)
+        public async Task<IEnumerable<BooksByAuthorServiceModel>> GetBooksAsync(int authorId)
 
             => await _dbContext.Books
                                .Where(b => b.AuthorId == authorId)
@@ -50,7 +50,7 @@ namespace BookShop.Services
             return author.AuthorId;
         }
 
-        public async Task<bool> Exists(int authorId)
+        public async Task<bool> ExistsAsync(int authorId)
         {
             return await _dbContext.Authors.AnyAsync(a => a.AuthorId == authorId);
         }

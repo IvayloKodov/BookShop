@@ -20,7 +20,7 @@ namespace BookShop.Services
             _dbContext = dbContext;
         }
 
-        public async Task<BookDetailsServiceModel> BookDetails(int bookId)
+        public async Task<BookDetailsServiceModel> BookDetailsAsync(int bookId)
         {
             return await _dbContext.Books
                 .Where(b => b.BookId == bookId)
@@ -28,7 +28,7 @@ namespace BookShop.Services
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<BooksListServiceModel>> Search(string searchQuery)
+        public async Task<IEnumerable<BooksListServiceModel>> SearchAsync(string searchQuery)
         {
             return await _dbContext.Books
                 .Where(b => b.Title.ToLower().Contains(searchQuery.ToLower()))
@@ -38,7 +38,7 @@ namespace BookShop.Services
                 .ToListAsync();
         }
 
-        public async Task<int> Create(int authorId, string title, string description, decimal price, int copies, int? edition, int? ageRestriction, DateTime releaseDate, string categories)
+        public async Task<int> CreateAsync(int authorId, string title, string description, decimal price, int copies, int? edition, int? ageRestriction, DateTime releaseDate, string categories)
         {
             var categoryNames = categories.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 

@@ -7,10 +7,10 @@ namespace BookShop.Services.Interfaces
 {
     public interface IBooksService
     {
-        Task<BookDetailsServiceModel> BookDetails(int bookId);
+        Task<BookDetailsServiceModel> BookDetailsAsync(int bookId);
 
-        Task<IEnumerable<BooksListServiceModel>> Search(string searchQuery);
+        Task<IEnumerable<BooksListServiceModel>> SearchAsync(string searchQuery);
 
-        Task<int> Create(int authorId, string title, string description, decimal price, int copies, int? edition, int? ageRestriction, DateTime releaseDate, string categories);
+        Task<int> CreateAsync(int authorId, string title, string description, decimal price, int copies, int? edition, int? ageRestriction, DateTime releaseDate, string categories);
     }
 }
