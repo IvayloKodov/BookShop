@@ -21,7 +21,7 @@ namespace BookShop.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BookShopDbContext>(options => 
+            services.AddDbContext<BookShopDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAutoMapper();
@@ -29,6 +29,8 @@ namespace BookShop.Api
             services.AddDomainServices();
 
             services.AddSession();
+
+            services.AddResponseCaching();
 
             services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -39,6 +41,8 @@ namespace BookShop.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseDatabaseMigration();
+
+            app.UseResponseCaching();
 
             if (env.IsDevelopment())
             {

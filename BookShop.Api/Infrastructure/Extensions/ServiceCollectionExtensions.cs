@@ -1,12 +1,11 @@
-﻿using BookShop.Services;
+﻿using System.Linq;
+using System.Reflection;
+using BookShop.Services;
 using BookShop.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BookShop.Api.Infrastructure.Extensions
 {
-    using System.Linq;
-    using System.Reflection;
-    using Microsoft.Extensions.DependencyInjection;
-
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddDomainServices(this IServiceCollection services)

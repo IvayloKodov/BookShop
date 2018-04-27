@@ -1,5 +1,4 @@
-﻿
-namespace BookShop.Api.Constants
+﻿namespace BookShop.Api.Constants
 {
     public class WebConstants
     {

@@ -13,6 +13,7 @@ namespace BookShop.Services
 {
     public class BooksService : IBooksService
     {
+        private const int PageSize = 10;
         private readonly BookShopDbContext _dbContext;
 
         public BooksService(BookShopDbContext dbContext)
@@ -33,7 +34,7 @@ namespace BookShop.Services
             return await _dbContext.Books
                 .Where(b => b.Title.ToLower().Contains(searchQuery.ToLower()))
                 .OrderBy(b => b.Title)
-                .Take(10)
+                .Take(PageSize)
                 .ProjectTo<BooksListServiceModel>()
                 .ToListAsync();
         }

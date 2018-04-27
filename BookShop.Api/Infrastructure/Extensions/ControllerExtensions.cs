@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace BookShop.Api.Infrastructure.Extensions
+﻿namespace BookShop.Api.Infrastructure.Extensions
 {
+    using Microsoft.AspNetCore.Mvc;
+
     public static class ControllerExtensions
     {
         public static IActionResult OkOrNotFound(this Controller controller, object model)
