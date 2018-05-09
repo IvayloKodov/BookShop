@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BookShop.Api.Infrastructure.Extensions;
+﻿using System.Threading.Tasks; 
 using BookShop.Api.Infrastructure.Filters;
 using BookShop.Api.Models;
 using BookShop.Services.Interfaces;

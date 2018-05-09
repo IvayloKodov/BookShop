@@ -1,15 +1,12 @@
-﻿using System.Threading.Tasks;
-using BookShop.Api.Constants;
-using BookShop.Api.Infrastructure.Extensions;
-using BookShop.Api.Infrastructure.Filters;
-using BookShop.Api.Models;
-using BookShop.Services.Interfaces;
-
-namespace BookShop.Api.Controllers
+﻿namespace BookShop.Api.Controllers
 {
+    using System.Threading.Tasks;
+    using Infrastructure.Filters;
+    using Models;
+    using Services.Interfaces;
     using Microsoft.AspNetCore.Mvc;
 
-    using static WebConstants;
+    using static Constants.WebConstants;
 
     public class AuthorsController : BaseApiController
     {

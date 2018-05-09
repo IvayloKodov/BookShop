@@ -5,5 +5,14 @@
     [Route("api/[controller]")]
     public abstract class BaseApiController : Controller
     {
+        public virtual IActionResult OkOrNotFound(object value)
+        {
+            if (value == null)
+            {
+                return new NotFoundObjectResult(value);
+            }
+
+            return new OkObjectResult(value);
+        }
     }
 }
