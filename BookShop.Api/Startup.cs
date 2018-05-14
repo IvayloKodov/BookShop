@@ -24,7 +24,7 @@ namespace BookShop.Api
             services.AddDbContext<BookShopDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddAutoMapper();
+            services.AddAutoMapper(); 
 
             services.AddDomainServices();
 
@@ -41,7 +41,7 @@ namespace BookShop.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseDatabaseMigration();
-
+             
             app.UseResponseCaching();
 
             if (env.IsDevelopment())
