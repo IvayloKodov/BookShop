@@ -38,6 +38,8 @@ namespace BookShop.Api
 
             services.AddSession();
 
+            services.AddMemoryCache();
+
             services.AddResponseCaching();
 
             services.AddRouting(options => options.LowercaseUrls = true);
