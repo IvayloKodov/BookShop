@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using BookShop.Api.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using BookShop.Data;
@@ -22,7 +23,14 @@ namespace BookShop.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BookShopDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(
+                            maxRetryCount: 5,
+                            maxRetryDelay: TimeSpan.FromSeconds(30),
+                            errorNumbersToAdd: null);
+                    }));
 
             services.AddAutoMapper(); 
 
