@@ -10,10 +10,10 @@ namespace BookShop.Api.Controllers
 {
     public class BooksController : BaseApiController
     {
-        private readonly IBooksService _booksService;
+        private readonly ICachedBooksService _booksService;
         private readonly IAuthorsService _authorsService;
 
-        public BooksController(IBooksService booksService, IAuthorsService authorsService)
+        public BooksController(ICachedBooksService booksService, IAuthorsService authorsService)
         {
             _booksService = booksService;
             _authorsService = authorsService;
