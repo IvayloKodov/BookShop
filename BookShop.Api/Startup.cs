@@ -5,6 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using BookShop.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -32,7 +35,7 @@ namespace BookShop.Api
                             errorNumbersToAdd: null);
                     }));
 
-            services.AddAutoMapper(); 
+            services.AddAutoMapper();
 
             services.AddDomainServices();
 
@@ -44,6 +47,19 @@ namespace BookShop.Api
 
             services.AddRouting(options => options.LowercaseUrls = true);
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials();
+                    });
+            });
+
             services.AddMvc();
         }
 
@@ -51,7 +67,7 @@ namespace BookShop.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseDatabaseMigration();
-             
+
             app.UseResponseCaching();
 
             if (env.IsDevelopment())
@@ -60,6 +76,8 @@ namespace BookShop.Api
             }
 
             app.UseSession();
+
+            app.UseCors("AllowAll");
 
             app.UseMvc();
         }
