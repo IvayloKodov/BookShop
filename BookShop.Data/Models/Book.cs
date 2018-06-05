@@ -19,6 +19,8 @@ namespace BookShop.Data.Models
 
         public int? AgeRestriction { get; set; }
 
+        [Display(Name = "Release Date")]
+        [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
 
         public int Copies { get; set; }
