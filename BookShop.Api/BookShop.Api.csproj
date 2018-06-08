@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>0e3ed884-0709-4ac4-8297-4d02303127d4</UserSecretsId>
+    <Configurations>Debug;Release;Production;Development</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,6 +27,18 @@
     <ProjectReference Include="..\BookShop.Common\BookShop.Common.csproj" />
     <ProjectReference Include="..\BookShop.Data\BookShop.Data.csproj" />
     <ProjectReference Include="..\BookShop.Services\BookShop.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.Production.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

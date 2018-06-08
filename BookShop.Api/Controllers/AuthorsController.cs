@@ -1,4 +1,7 @@
-﻿namespace BookShop.Api.Controllers
+﻿using BookShop.Api.Configurations;
+using Microsoft.Extensions.Options;
+
+namespace BookShop.Api.Controllers
 {
     using System.Threading.Tasks;
     using Infrastructure.Filters;
@@ -11,10 +14,12 @@
     public class AuthorsController : BaseApiController
     {
         private readonly IAuthorsService _authorsService;
+        private readonly ISmtpConfiguration _smtpConfiguration;
 
-        public AuthorsController(IAuthorsService authorsService)
+        public AuthorsController(IAuthorsService authorsService, IOptions<SmtpConfiguration> smtpOptions)
         {
             _authorsService = authorsService;
+            _smtpConfiguration = smtpOptions.Value;
         }
 
         [HttpGet(WithId)]

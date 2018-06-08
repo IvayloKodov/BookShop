@@ -1,4 +1,6 @@
-﻿namespace BookShop.Api
+﻿using Microsoft.Extensions.Configuration;
+
+namespace BookShop.Api
 {
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
@@ -6,7 +8,7 @@
     public class Program
     {
         public static void Main(string[] args)
-        {
+        { 
             BuildWebHost(args).Run();
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using AutoMapper;
+using BookShop.Api.Configurations;
 using BookShop.Api.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using BookShop.Data;
@@ -13,7 +14,7 @@ namespace BookShop.Api
     public class Startup
     {
         public Startup(IConfiguration configuration)
-        { 
+        {
             Configuration = configuration;
         }
 
@@ -31,6 +32,8 @@ namespace BookShop.Api
                             maxRetryDelay: TimeSpan.FromSeconds(30),
                             errorNumbersToAdd: null);
                     }));
+
+            services.Configure<SmtpConfiguration>(Configuration.GetSection("Smtp"));
 
             services.AddAutoMapper();
 
@@ -62,10 +65,12 @@ namespace BookShop.Api
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        { 
+        {
             var builder = new ConfigurationBuilder();
 
-            app.UseDatabaseMigration();
+            builder.AddJsonFile("appsettings.json")
+                   .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                   .AddEnvironmentVariables();
 
             app.UseResponseCaching();
 
@@ -75,11 +80,13 @@ namespace BookShop.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseDatabaseMigration();
+
             app.UseSession();
 
             app.UseCors("AllowAll");
 
-            app.UseMvc(); 
+            app.UseMvc();
 
             builder.AddEnvironmentVariables();
 

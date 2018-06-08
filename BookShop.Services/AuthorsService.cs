@@ -14,8 +14,7 @@ namespace BookShop.Services
 
     public class AuthorsService : IAuthorsService
     {
-        private readonly BookShopDbContext _dbContext;
-
+        private readonly BookShopDbContext _dbContext; 
         public AuthorsService(BookShopDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -32,6 +31,7 @@ namespace BookShop.Services
         public async Task<IEnumerable<BooksByAuthorServiceModel>> GetBooksAsync(int authorId)
 
             => await _dbContext.Books
+                               .AsNoTracking()
                                .Where(b => b.AuthorId == authorId)
                                .ProjectTo<BooksByAuthorServiceModel>()
                                .ToListAsync();
