@@ -40,6 +40,9 @@ namespace BookShop.Data
                 .WithOne(i => i.Order)
                 .HasForeignKey(i => i.OrderId);
 
+            builder.Entity<Book>()
+               .Property(b => b.RowVersion)
+               .IsConcurrencyToken();
         }
     }
 }
