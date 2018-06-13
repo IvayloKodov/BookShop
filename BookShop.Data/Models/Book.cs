@@ -31,6 +31,9 @@ namespace BookShop.Data.Models
 
         public int AuthorId { get; set; }
 
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
         public Author Author { get; set; }
 
         public List<BookCategory> Categories { get; set; } = new List<BookCategory>();
