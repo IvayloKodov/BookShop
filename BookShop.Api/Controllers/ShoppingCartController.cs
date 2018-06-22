@@ -18,6 +18,7 @@ namespace BookShop.Api.Controllers
             _cartItemsService = cartItemsService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Items()
         {
             var shoppingCartItems = _shoppingCartManager.GetItems(HttpContext.Session.GetShoppingCartId()).ToList();
@@ -27,6 +28,7 @@ namespace BookShop.Api.Controllers
             return Ok(cartItemServiceModels);
         }
 
+        [HttpPost]
         public IActionResult AddToCart(int bookId)
         {
             var shoppingCartId = HttpContext.Session.GetShoppingCartId();

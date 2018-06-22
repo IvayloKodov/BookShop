@@ -1,14 +1,14 @@
 ﻿using BookShop.Api.Configurations;
+using BookShop.Services.Models.Authors;
 using Microsoft.Extensions.Options;
+using System.Threading.Tasks;
+using BookShop.Api.Infrastructure.Filters;
+using BookShop.Api.Models;
+using BookShop.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookShop.Api.Controllers
-{
-    using System.Threading.Tasks;
-    using Infrastructure.Filters;
-    using Models;
-    using Services.Interfaces;
-    using Microsoft.AspNetCore.Mvc;
-
+{ 
     using static Constants.WebConstants;
 
     public class AuthorsController : BaseApiController
@@ -23,6 +23,8 @@ namespace BookShop.Api.Controllers
         }
 
         [HttpGet(WithId)]
+        [ProducesResponseType(typeof(AuthorDetailsServiceModel), 200)]
+        [ProducesResponseType(404)]
         public async Task<IActionResult> Get(int id)
             => this.OkOrNotFound(await _authorsService.DetailsAsync(id));
 

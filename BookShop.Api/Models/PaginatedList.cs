@@ -8,7 +8,7 @@ namespace BookShop.Api.Models
 {
     public class PaginatedList<T> : List<T>
     {
-        public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
+        public PaginatedList(IEnumerable<T> items, int count, int pageIndex, int pageSize)
         {
             PageIndex = pageIndex;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);

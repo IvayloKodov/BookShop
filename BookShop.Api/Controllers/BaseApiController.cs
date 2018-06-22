@@ -5,7 +5,7 @@
     [Route("api/[controller]")]
     public abstract class BaseApiController : Controller
     {
-        public virtual IActionResult OkOrNotFound(object value)
+        protected virtual IActionResult OkOrNotFound(object value)
         {
             if (value == null)
             {

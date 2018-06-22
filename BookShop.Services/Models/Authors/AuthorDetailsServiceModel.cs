@@ -1,6 +1,7 @@
 ﻿using BookShop.Common.Mapping;
 using BookShop.Data.Models;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using AutoMapper;
 
@@ -10,8 +11,10 @@ namespace BookShop.Services.Models.Authors
     {
         public int AuthorId { get; set; }
 
+        [Required]
         public string FirstName { get; set; }
 
+        [Required]
         public string LastName { get; set; }
 
         public IEnumerable<string> BookTitles { get; set; }
